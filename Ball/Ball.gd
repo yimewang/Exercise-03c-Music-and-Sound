@@ -68,7 +68,14 @@ func distort():
 	$Images.scale = direction
 	
 func comet():
-	pass
+	var comet_container = get_node_or_null("/root/Game/Comet_Container")
+	if comet_container != null:
+		var sprite = $Images/Sprite.duplicate()
+		sprite.global_position = global_position
+		comet_container.add_child(sprite)
 
 func die():
+	var die_sound = get_node_or_null("/root/Game/Die")
+	if die_sound != null:
+		die_sound.play()
 	queue_free()
